@@ -38,8 +38,8 @@ public class HangManMinigame
     String foodItem = "Orange";
 
     //List of foods the user will be guessing
-    String guessingWordsList[] = {"Food", "Strawberry", "Lemonade",
-                                "Cheeseburger", "Nutella"};
+    String guessingWordsList[] = {"food", "strawberry", "lemonade",
+                                "cheeseburger", "nutella"};
 
     //A random food would be selected for hangman minigame
     int k = (int)(Math.random() * 5);
