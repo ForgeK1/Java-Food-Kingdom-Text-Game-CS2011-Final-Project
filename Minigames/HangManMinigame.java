@@ -74,8 +74,8 @@ public class HangManMinigame
                        + guessingWordsList[k].length() + " letters: "
                        + foodItemMysteryWord);
 
-    //What word the program wants you to find out
-    System.out.println(guessingWordsList[k]);
+    // //What word the program wants you to find out
+    // System.out.println(guessingWordsList[k]);
 
     /*An inifinite loop that will keep going until the user correctly guesses
     the right letters or word to replace all of the "*" in the mystery word*/
@@ -91,11 +91,11 @@ public class HangManMinigame
 
       if(userGuess.equals(guessingWordsList[k]))
       {
-        System.out.println("The machine prints out, \"YOU GOT IT RIGHT! YOU "
-                           + "WIN!. HERE'S YOUR RIZZ.\" You earn enough money "
+        System.out.println("\nThe machine prints out, \"YOU GOT IT RIGHT! YOU "
+                           + "WIN!. HERE'S YOUR PRIZE.\" You earn enough money "
                            + "to go and buy an ingredient. So you buy "
                            + foodItem + " and continue with your quest.");
-        break;
+        System.exit(0); 
       }
       else if(guessingWordsList[k].contains(userGuess)
               && userGuess.trim().length() == 1)
@@ -144,7 +144,7 @@ public class HangManMinigame
     }
 
     System.out.println("\nThe machine prints out, \"YOU GOT IT RIGHT! YOU "
-                       + "WIN!. HERE'S YOUR RIZZ.\" You earn enough money "
+                       + "WIN!. HERE'S YOUR PRIZE.\" You earn enough money "
                        + "to go and buy an ingredient. So you buy "
                        + foodItem + " and continue with your quest.");
 
