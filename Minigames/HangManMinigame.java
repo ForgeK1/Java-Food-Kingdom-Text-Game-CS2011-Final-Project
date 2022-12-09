@@ -30,35 +30,33 @@ public class HangManMinigame
 
     System.out.print("\nAre you ready? Input any whole number to continue: ");
 
-    //The food item the user recieves
-    String foodItem = "Orange";
-
-
     /*The variable below gives time to the player to read the prompt and
     prepare to what's about to come next.*/
     int playerContinuesLevel = input.nextInt();
 
+    //The food item the user recieves
+    String foodItem = "Orange";
+
     //List of foods the user will be guessing
-    String guessingWordsList[] = {"Food", "Strawberry", "Lemonade",
-                                "Cheeseburger", "Nutella"};
+    String guessingWordsList[] = {"food", "strawberry", "lemonade",
+                                "cheeseburger", "nutella"};
 
-    //A random food would be selected
+    //A random food would be selected for hangman minigame
     int k = (int)(Math.random() * 5);
-
-    //If the player gets the letter or word wrong we start from the body first
-    int b = 0;
 
     //List of hangman parts that will be printed
     String hangmanParts[] = {"Head", "Body", "L-Arm", "R-Arm", "L-Leg",
                              "R-Leg"};
+    //a variable to increase for hangmanParts if the user inputs the wrong thing
+    int b = 0;
 
     System.out.println("\nThe machine prints out, LET THE GAME BEGIN!");
 
     //The word that the user is trying to find
     String foodItemMysteryWord = "";
 
-    /*A loop to fills empty spots and spaces into a String for the user to
-    guess letters*/
+    /*A loop to fills empty spots with stars or spaces into a String
+    for the user to guess letters*/
     for(int i = 0; i < guessingWordsList[k].length(); i++)
     {
       if(Character.isLetter(guessingWordsList[k].charAt(i)))
@@ -76,8 +74,8 @@ public class HangManMinigame
                        + guessingWordsList[k].length() + " letters: "
                        + foodItemMysteryWord);
 
-    //What word the program wants you to find out
-    System.out.println(guessingWordsList[k]);
+    // //What word the program wants you to find out
+    // System.out.println(guessingWordsList[k]);
 
     /*An inifinite loop that will keep going until the user correctly guesses
     the right letters or word to replace all of the "*" in the mystery word*/
@@ -93,11 +91,11 @@ public class HangManMinigame
 
       if(userGuess.equals(guessingWordsList[k]))
       {
-        System.out.println("The machine prints out, \"YOU GOT IT RIGHT! YOU "
-                           + "WIN!. HERE'S YOUR RIZZ.\" You earn enough money "
+        System.out.println("\nThe machine prints out, \"YOU GOT IT RIGHT! YOU "
+                           + "WIN!. HERE'S YOUR PRIZE.\" You earn enough money "
                            + "to go and buy an ingredient. So you buy "
                            + foodItem + " and continue with your quest.");
-        break;
+        System.exit(0); 
       }
       else if(guessingWordsList[k].contains(userGuess)
               && userGuess.trim().length() == 1)
@@ -113,12 +111,16 @@ public class HangManMinigame
             tempWord += foodItemMysteryWord.charAt(i);
           }
         }
+
         /*We added this after the for loop because we did want the last else
         statement to occur. Since we don't want ItemMysteryWord = tempWord
         unless tempWord is populated and not empty*/
         foodItemMysteryWord = tempWord;
+
+        System.out.println("\nCurrent Word: " + foodItemMysteryWord);
       }
-      else
+      else if (!(guessingWordsList[k].contains(userGuess)
+                && userGuess.trim().length() == 1))
       {
         System.out.println("\nYour input is wrong because you did not input "
                            + "the right letter or word. We draw now "
@@ -136,15 +138,13 @@ public class HangManMinigame
         }
 
         b++;
+
+        System.out.println("\nCurrent Word: " + foodItemMysteryWord);
       }
-
-      foodItemMysteryWord = tempWord;
-
-      System.out.println("\nCurrent Word: " + foodItemMysteryWord);
     }
 
     System.out.println("\nThe machine prints out, \"YOU GOT IT RIGHT! YOU "
-                       + "WIN!. HERE'S YOUR RIZZ.\" You earn enough money "
+                       + "WIN!. HERE'S YOUR PRIZE.\" You earn enough money "
                        + "to go and buy an ingredient. So you buy "
                        + foodItem + " and continue with your quest.");
 
