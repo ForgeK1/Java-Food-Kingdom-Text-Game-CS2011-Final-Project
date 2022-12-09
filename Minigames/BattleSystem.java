@@ -50,9 +50,13 @@ public class BattleSystem {
 
       }
 
-      if(selection == 'b') {
+      else if(selection == 'b') {
         battleStatus = false;
         System.out.println("You escaped. You pussy." );
+      }
+
+      else{
+        System.out.println("Erm, that isn't a valid option. 🤓🤓🤓 \n");
       }
 
       if(yourCurrentHP < 0) {
@@ -64,6 +68,7 @@ public class BattleSystem {
         battleStatus = false;
         System.out.println("That mf got clapped!!! RIP bozo.");
       }
+
 
     }
 
