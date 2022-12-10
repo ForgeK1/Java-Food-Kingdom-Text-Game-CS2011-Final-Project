@@ -3,7 +3,30 @@ import java.util.Arrays;
 
 public class VideoGameBones {
   public static void main(String[] args) {
-    //♥ █ | ╔ = ╗ \u255D ╚
+
+    if (args.length > 0 && args[0].equals("-help")){
+      System.out.println("Welcome to Food Kingdom. In this game you must travel"
+      + " to the ancient grocery tomb/ruins in order to slay the perfect "
+      + "ingredients in order to heal the sick king. But these foods have "
+      + "tricks up their sleeves, so be careful!\n");
+
+      System.out.println("You must wander around the map, and face several "
+      + "trials. Upon winning each trial, you will win the promised ingredient"
+      + "but simply having ingredients is not enough. They have to make the "
+      + "perfect combination in order to make an adequate dish. So leave once "
+      + "you judge that you have enough ingredients\n");
+
+      System.out.println("HINT: YOU ONLY EVER NEED 1 OF EACH INGREDIENT "
+      + "(REPEATS DONT COUNT)\n");
+
+      System.out.println("WARNING: IF YOU FAIL 3 OF THE TRIALS. YOU'RE WILL IS "
+      + "BROKEN, AND ITS GAME OVER");
+    } else {
+
+
+
+
+
     Scanner input = new Scanner(System.in);
     boolean[] space = new boolean[29];
 
@@ -19,26 +42,24 @@ public class VideoGameBones {
 
     int[] numLosses = {0};
 
-    System.out.println("You have entered the dungeon.\n To move around use:\n  "
-    + " w\n a s d \n\n To leave use q");
-
     char move = ' ';
     do {
     System.out.println("\n\n\n\n\n\n\n\n\n\n To move around use"
     + ":\n   w\n a s d \n\n To leave use q\n"
     + "╔=======╗\n"
-    + "|\033[0;103m" + occupied(space[0]) +  "\033[0m" + occupied(space[1]) +occupied(space[2])
-    +occupied(space[3]) + occupied(space[4]) +occupied(space[5])
-    +occupied(space[6]) +"|\n"
-    + "|" + occupied(space[7]) + "█" + occupied(space[8]) + "█"
-    + occupied(space[9]) + "█" + occupied(space[10]) + "|\n"
-    + "|" + occupied(space[11]) + occupied(space[12])+occupied(space[13])
-    +occupied(space[14])+occupied(space[15])+occupied(space[16])
-    +occupied(space[17])+ "|\n" + "|" + occupied(space[18]) + "█"
-    + occupied(space[19]) + "█" + occupied(space[20]) + "█"
-    + occupied(space[21]) + "|\n"+ "|" + occupied(space[22])
-    + occupied(space[23]) + occupied(space[24]) +occupied(space[25])
-    +occupied(space[26]) +occupied(space[27]) +occupied(space[28]) +"|\n"
+    + "|\033[0;103m" + occupied(space[0]) +  "\033[0m" + occupied(space[1])
+    + occupied(space[2])
+    + occupied(space[3]) + occupied(space[4]) + occupied(space[5])
+    + occupied(space[6]) +"|\n" + "|" + occupied(space[7]) + "█"
+    + occupied(space[8]) + "█" + occupied(space[9]) + "█" + occupied(space[10])
+    + "|\n" + "|" + occupied(space[11]) + occupied(space[12])
+    + occupied(space[13]) + occupied(space[14])+ occupied(space[15])
+    + occupied(space[16]) + occupied(space[17])+ "|\n" + "|"
+    + occupied(space[18]) + "█" + occupied(space[19]) + "█"
+    + occupied(space[20]) + "█" + occupied(space[21]) + "|\n"+ "|"
+    + occupied(space[22]) + occupied(space[23]) + occupied(space[24])
+    + occupied(space[25]) + occupied(space[26]) + occupied(space[27])
+    + occupied(space[28]) +"|\n"
     + "╚=======|" + "\n\n\n"
     + "Number of Losses: " + numLosses[0]
     + "\n\nFood Collected:\n-------------------------\n1: " + basket[0]
@@ -93,6 +114,7 @@ public class VideoGameBones {
       System.out.println("\n\n\n\n\n\n\n\n\n You have lost 3 times. GAME OVER");
 
       input.close();
+    }
   }
 
 
