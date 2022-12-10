@@ -50,47 +50,31 @@ public class BlackJackMinigame
     {
 /*-----------------------Checks Who Won The Minigame--------------------------*/
 
-      /*The reason why we check who won the minigame first is because once the,
-      program or the user got 21 or one automatically lost due to going over 21,
-      then like last time the program would skip this step even if the program
-      or the user recieved 3 out of the 5 points*/
+    /*The reason why we check who won the minigame first is because once the,
+    program or the user got 21 or one automatically lost due to going over 21,
+    then like last time the program would skip this step even if the program
+    or the user recieved 3 out of the 5 points*/
 
-      //Checks if the user tied with the program on round 5
-      if(userRoundsWon == 3 && programRoundsWon == 3)
-      {
-        System.out.println("Since you tied with the other person on round " +
-                           k + ", then we increase the max round to play one " +
-                           "more time!");
 
-        //Increases maximum rounds by 1
-        maximumRounds++;
-      }
-      else
-      {
-        //Checks if the player won the game
-        if(userRoundsWon >= 3)
-        {
-          System.out.println("\nCongradulations, you won the game! The food "
-                             + "item you recieve is " + foodItem);
+    //Checks if the player won the game
+    if(userRoundsWon >= 3)
+    {
+      System.out.println("\nCongradulations, you won the game! The food "
+      + "item you recieve is " + foodItem);
 
-          System.out.println("\nTotal rounds you won: " + userRoundsWon + "\n\n"
-                              + "Total rounds they won: " + programRoundsWon);
+      //Stops the whole for loop since player won the minigame
+      break;
+    }
+    //Checks if the program won the game
+    else if(programRoundsWon >= 3)
+    {
+      System.out.println("\nUnfortunately, you lost the game! And you do "
+      + "not recieve the food item. So, you continue "
+      + "with your quest.");
 
-          //Stops the whole for loop since player won the minigame
-          break;
-        }
-
-        //Checks if the program won the game
-        if(programRoundsWon >= 3)
-        {
-          System.out.println("\nUnfortunately, you lost the game! And you do "
-                             + "not recieve the food item. So, you continue "
-                             + "with your quest.");
-
-          //Stops the whole for loop since program won the minigame
-          break;
-        }
-      }
+      //Stops the whole for loop since program won the minigame
+      break;
+    }
 
 /*-----------------------------User's Field-----------------------------------*/
 
