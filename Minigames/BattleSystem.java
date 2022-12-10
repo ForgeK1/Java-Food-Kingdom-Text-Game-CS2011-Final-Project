@@ -73,6 +73,6 @@ public class BattleSystem {
     }
 
 
-
+    input.close();
   }
 }

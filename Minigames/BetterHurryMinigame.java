@@ -14,7 +14,7 @@ public class BetterHurryMinigame
                        + "two out of the three rounds you get a food item! "
                        + "If you lose then you walk away with nothing.");
 
-    String randomizedFoodItem = "Bannana";
+    String randomizedFoodItem = "onion";
 
     System.out.print("\nYou ready? Input any whole number to continue: ");
 

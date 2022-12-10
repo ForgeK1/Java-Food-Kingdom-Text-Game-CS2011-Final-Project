@@ -65,6 +65,6 @@ public class PickAChest {
     }
 
 
-
+    input.close();
   }
 }
