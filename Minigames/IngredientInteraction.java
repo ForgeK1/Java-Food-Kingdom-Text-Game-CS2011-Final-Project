@@ -386,8 +386,13 @@ public class IngredientInteraction {
                                   + "YOU HUMANS ARE SCARED OF THINGS MUCH "
                                   + "SMALLER THAN YOU, YOU PUSSIES! \n");
               System.out.println("Ok, you for real can't let that slide now, "
-                                  + "go beat it up. \n");
-              //enter into BattleSystem program
+                                  + "go beat it up. \n"
+                                  + "You got into a tussle with the "
+                                  + "[ingredient] and emerged victorious. \n"
+                                  + "Unfortunately, you beat it so bad, it "
+                                  + "couldn't be used as an ingredient for "
+                                  + "your dish anymore.");
+              
               talkWithIngredient = false;
             }
 
