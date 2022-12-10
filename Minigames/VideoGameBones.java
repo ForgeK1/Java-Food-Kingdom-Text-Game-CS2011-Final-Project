@@ -91,7 +91,7 @@ public class VideoGameBones {
       switch(minigame) {
         case 0: battleSystem(basket, numLosses);
                 break;
-        case 1: miniGame2(basket, numLosses);
+        case 1: blackJack(basket, numLosses);
                 break;
         case 2: hangMan(basket, numLosses);
                 break;
@@ -399,15 +399,273 @@ Minimap methods
 
 
 
-  public static void miniGame2(String[] basket, int[] numLosses){
+  public static void blackJack(String[] basket, int[] numLosses){
+    //Created Scanner Object
     Scanner input = new Scanner(System.in);
-    System.out.println("You have entered mini-game-2\ncarefully enter \"win\" "
-    + "to win");
-    String winOrLose = input.next();
-    if(winOrLose.equals("win")){
-      addFood(basket);
-    } else {
+
+    //Story of the minigame
+    System.out.println("As your walking through the aisle you see an individual "
+                       + "who is sitting down in front of a table with a food "
+                       + "item that you need to make a dish to heal the King. "
+                       + "Funnily enough they said that if you beat them in "
+                       + "a game of Blackjack then you get the food item, if "
+                       + "not then you walk away with nothing.");
+
+    /*Clean this section up with more simpler rules and proper grammer*/
+    System.out.println("\nThe rules are simple, your goal is to get as close "
+                       + "as to 21 as possible before you end your turn. Once "
+                       + "ended, the dealer starts their turn at drawing cards "
+                       + "until they get close to 21. If you or the "
+                       + "dealer passes 21, then the other wins the round. "
+                       + "If you or the dealer gets 21 exactly, then they "
+                       + "automatically win the round. There are five rounds,"
+                       + "and whoever wins three out of the five rounds wins "
+                       + "the game. Lastly, if you and the other person ties "
+                       + "with each other on round 5, then the maximum round "
+                       + "is increased and everyone continues to play until "
+                       + "someone wins!");
+
+    System.out.print("\nAre you ready? Input any whole number to continue: ");
+
+    /*The variable below gives time to the player to read the prompt and
+    prepare to what's about to come next.*/
+    int playerContinuesLevel = input.nextInt();
+
+    //Rounds Score Count
+    int userRoundsWon = 0;
+    int programRoundsWon = 0;
+    int maximumRounds = 5;
+
+    //Food item
+    String foodItem = "potato";
+
+    /*A for loop that makes the player and the program verse each other for the
+    next five rounds. We include 6 because the last will check who won the
+    minigame if both are tied on round 5*/
+    for(int k = 1; k <= 6; k++)
+    {
+/*-----------------------Checks Who Won The Minigame--------------------------*/
+
+    /*The reason why we check who won the minigame first is because once the,
+    program or the user got 21 or one automatically lost due to going over 21,
+    then like last time the program would skip this step even if the program
+    or the user recieved 3 out of the 5 points*/
+
+
+    //Checks if the player won the game
+    if(userRoundsWon >= 3)
+    {
+      System.out.println("\nCongradulations, you won the game! The food "
+      + "item you recieve is " + foodItem);
+
+      int foodNum = -1;
+      int i = 0;
+      while(i <= 8){
+        if(i == 8){
+          basket[i] = foodItem;
+          System.out.println("You can not carry more than 8 food items. Please en"
+          + "ter an integer from 1 to 9 to discard an item");
+          while(foodNum < 0 || 10 < foodNum) {
+            System.out.println("\n\n\n\n\n\n\n\n\n"
+            + "1: " + basket[0]
+            + "\n2: " + basket[1]
+            + "\n3: " + basket[2]
+            + "\n4: " + basket[3]
+            + "\n5: " + basket[4]
+            + "\n6: " + basket[5]
+            + "\n7: " + basket[6]
+            + "\n8: " + basket[7]
+            + "\n9: " + basket[8] + "(item you just obtained)");
+            foodNum = input.nextInt();
+          }
+          basket[foodNum - 1] = basket[i];
+          basket[8] = "";
+          return;
+        } else if(basket[i] == "") {
+          basket[i] = foodItem;
+          return;
+        }
+        i++;
+      }
+    }
+    //Checks if the program won the game
+    else if(programRoundsWon >= 3)
+    {
+      System.out.println("\nUnfortunately, you lost the game! And you do "
+      + "not recieve the food item. So, you continue "
+      + "with your quest.");
+
       numLosses[0]++;
+    }
+
+/*-----------------------------User's Field-----------------------------------*/
+
+      //Prompts the user what round it is
+      System.out.println("\nRound " + k + " begins");
+
+      //Variables for when it is the player's turn
+      char seeAgain;
+      int userIndividualNumber;
+      int userSumTotal = 0;
+      String userSumTotalInString = "";
+
+      //Player's turn to play
+      do
+      {
+        userIndividualNumber = (int)(Math.random() * 11 + 1);
+        userSumTotal += userIndividualNumber;
+        userSumTotalInString += " " + userIndividualNumber;
+
+        //Stops the current while loop if user's sumTotal = 21
+        if(userSumTotal == 21)
+        {
+          /*This line of code is here because it shows proof that this if
+          statement is true on the console*/
+          System.out.println("\nYou currently have" + userSumTotalInString
+                             + ".");
+
+          System.out.println("\nYou got 21! That means that the other person "
+                             + "lost the round automatically.");
+          userRoundsWon++;
+
+          System.out.println("\nTotal rounds you won: " + userRoundsWon + "\n\n"
+                              + "Total rounds they won: " + programRoundsWon);
+
+          break;
+        }
+
+        //Stops the current while loop if user went above 21
+        if(userSumTotal > 21)
+        {
+          /*This line of code is here because it shows proof that this if
+          statement is true on the console*/
+          System.out.println("\nYou currently have" + userSumTotalInString
+                             + ".");
+
+          System.out.println("\nYou went over 21 which means you lost the " +
+                             "round!");
+          programRoundsWon++;
+
+          System.out.println("\nTotal rounds you won: " + userRoundsWon + "\n\n"
+                              + "Total rounds they won: " + programRoundsWon);
+
+          break;
+        }
+
+        System.out.println("\nYou currently have" + userSumTotalInString
+                           + ". Would you want to add one more? Enter 'n' or "
+                           + "'N' to not recieve anymore cards.");
+        seeAgain = input.next().charAt(0);
+      } while(seeAgain != 'N' && seeAgain != 'n');
+
+      //Repeats the main for loop if user went over or equaled 21
+      if(userSumTotal == 21 || userSumTotal > 21)
+      {
+        continue;
+      }
+
+/*-----------------------------Program's Field--------------------------------*/
+
+      //Variables for when it is the program's turn
+      int programIndividualNumber;
+      int programSumTotal = 0;
+      String programSumTotalInString = "";
+
+      //Program's turn to play
+      while (programSumTotal <= 16)
+      {
+        programIndividualNumber = (int)(Math.random() * 11 + 1);
+        programSumTotal += programIndividualNumber;
+        programSumTotalInString += " " + programIndividualNumber;
+
+        //Stops the current while loop if program's sumTotal = 21
+        if(programSumTotal == 21)
+        {
+          /*This line of code is here because it shows proof that this if
+          statement is true on the console*/
+          System.out.println("\nThe other person has"
+                             + programSumTotalInString);
+
+          System.out.println("\nThe other person got 21! That means that you "
+                             + "lost the round automatically.");
+          programRoundsWon++;
+
+          System.out.println("\nTotal rounds you won: " + userRoundsWon + "\n\n"
+                              + "Total rounds they won: " + programRoundsWon);
+
+          break;
+        }
+
+        //Stops the current while loop if program went above 21
+        if(programSumTotal > 21)
+        {
+          /*This line of code is here because it shows proof that this if
+          statement is true on the console*/
+          System.out.println("\nThe other person has"
+                             + programSumTotalInString);
+
+          System.out.println("\nThe other person went over 21 which means you "
+                             + "won the round!");
+          userRoundsWon++;
+
+          System.out.println("\nTotal rounds you won: " + userRoundsWon + "\n\n"
+                              + "Total rounds they won: " + programRoundsWon);
+
+          break;
+        }
+
+        System.out.println("\nThe other person has" + programSumTotalInString);
+      }
+
+      //Repeats the main for loop if program went over 21
+      if(programSumTotal == 21 || programSumTotal > 21)
+      {
+        continue;
+      }
+
+/*-----------------Player's sumTotal vs Program's sumTotal--------------------*/
+
+      //Checks if the player has a higher num versus the program
+      if(userSumTotal > programSumTotal)
+      {
+        System.out.println("\nSince you have a sum total of " + userSumTotal +
+                           " and the other person has a sum total of " +
+                           programSumTotal + ", then you win the round!");
+        userRoundsWon++;
+
+        System.out.println("\nTotal rounds you won: " + userRoundsWon + "\n\n"
+                          + "Total rounds they won: " + programRoundsWon);
+
+
+
+      }
+
+      //Checks if the program has a higher num versus the player
+      if(programSumTotal > userSumTotal)
+      {
+        System.out.println("\nSince you have a sum total of " + userSumTotal +
+                           " and the other person has a sum total of " +
+                           programSumTotal + ", then they win the round!");
+        programRoundsWon++;
+
+        System.out.println("\nTotal rounds you won: " + userRoundsWon + "\n\n"
+                          + "Total rounds they won: " + programRoundsWon);
+      }
+
+      //Checks if the player has tied with the program in regards to num
+      if(userSumTotal == programSumTotal)
+      {
+        System.out.println("\nSince you have a sum total of " + userSumTotal +
+                           " and the other person has a sum total of " +
+                           programSumTotal + ", then its a draw and both win " +
+                           "the round!");
+
+        userRoundsWon++;
+        programRoundsWon++;
+
+        System.out.println("\nTotal rounds you won: " + userRoundsWon + "\n\n"
+                          + "Total rounds they won: " + programRoundsWon);
+      }
     }
 
   }
