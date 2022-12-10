@@ -8,7 +8,7 @@ public class BlackJackMinigame
     Scanner input = new Scanner(System.in);
 
     //Story of the minigame
-    System.out.println("As your walking through the aile you see an individual "
+    System.out.println("As your walking through the aisle you see an individual "
                        + "who is sitting down in front of a table with a food "
                        + "item that you need to make a dish to heal the King. "
                        + "Funnily enough they said that if you beat them in "
