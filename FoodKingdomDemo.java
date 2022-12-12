@@ -419,7 +419,7 @@ Minimap methods
 
     /*The variable below gives time to the player to read the prompt and
     prepare to what's about to come next.*/
-    int playerContinuesLevel = input.next();
+    String playerContinuesLevel = input.next();
 
     //The food item the user recieves
     String foodItem = randomFood();
@@ -510,7 +510,7 @@ Minimap methods
               + "\n7: " + basket[6]
               + "\n8: " + basket[7]
               + "\n9: " + basket[8] + "(item you just obtained)");
-              foodNum = input.next();
+              foodNum = input.nextInt();
             }
             basket[foodNum - 1] = basket[i];
             basket[8] = "";
@@ -643,7 +643,7 @@ Minimap methods
 
     /*The variable below gives time to the player to read the prompt and
     prepare to what's about to come next.*/
-    int playerContinuesLevel = input.next();
+    String playerContinuesLevel = input.next();
 
     //Food and number of rounds won location
     String food = randomFood();
