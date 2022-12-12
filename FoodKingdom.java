@@ -854,8 +854,9 @@ Minimap methods
                        while(i <= 8){
                          if(i == 8){
                            basket[i] = foodItem;
-                           System.out.println("You can not carry more than 8 food items. Please en"
-                           + "ter an integer from 1 to 9 to discard an item");
+                           System.out.println("You can not carry more than 8 "
+                           + "food items. Please enter an integer from 1 to "
+                           + "9 to discard an item");
                            while(foodNum < 0 || 10 < foodNum) {
                              System.out.println("\n\n\n\n\n\n\n\n\n"
                              + "1: " + basket[0]
@@ -1304,8 +1305,9 @@ Minimap methods
                         while(i <= 8){
                           if(i == 8){
                             basket[i] = "tomato";
-                            System.out.println("You can not carry more than 8 food items. Please en"
-                            + "ter an integer from 1 to 9 to discard an item");
+                            System.out.println("You can not carry more than 8 "
+                            + "food items. Please enter an integer from 1 to "
+                            + "9 to discard an item");
                             while(foodNum < 0 || 10 < foodNum) {
                               System.out.println("\n\n\n\n\n\n\n\n\n"
                               + "1: " + basket[0]
@@ -1355,8 +1357,9 @@ Minimap methods
                           while(i <= 8){
                             if(i == 8){
                               basket[i] = "love";
-                              System.out.println("You can not carry more than 8 food items. Please en"
-                              + "ter an integer from 1 to 9 to discard an item");
+                              System.out.println("You can not carry more than 8 "
+                              + "food items. Please enter an integer from 1 to "
+                              + "9 to discard an item");
                               while(foodNum < 0 || 10 < foodNum) {
                                 System.out.println("\n\n\n\n\n\n\n\n\n"
                                 + "1: " + basket[0]
@@ -1394,8 +1397,9 @@ Minimap methods
                           while(i <= 8){
                             if(i == 8){
                               basket[i] = "tomato";
-                              System.out.println("You can not carry more than 8 food items. Please en"
-                              + "ter an integer from 1 to 9 to discard an item");
+                              System.out.println("You can not carry more than 8 "
+                              + "food items. Please enter an integer from 1 to "
+                              + "9 to discard an item");
                               while(foodNum < 0 || 10 < foodNum) {
                                 System.out.println("\n\n\n\n\n\n\n\n\n"
                                 + "1: " + basket[0]
@@ -1532,8 +1536,9 @@ Minimap methods
                     while(i <= 8){
                       if(i == 8){
                         basket[i] = "tomato";
-                        System.out.println("You can not carry more than 8 food items. Please en"
-                        + "ter an integer from 1 to 9 to discard an item");
+                        System.out.println("You can not carry more than 8 "
+                        + "food items. Please enter an integer from 1 to "
+                        + "9 to discard an item");
                         while(foodNum < 0 || 10 < foodNum) {
                           System.out.println("\n\n\n\n\n\n\n\n\n"
                           + "1: " + basket[0]
@@ -1578,8 +1583,9 @@ Minimap methods
                     while(i <= 8){
                     if(i == 8){
                       basket[i] = "love";
-                      System.out.println("You can not carry more than 8 food items. Please en"
-                      + "ter an integer from 1 to 9 to discard an item");
+                      System.out.println("You can not carry more than 8 "
+                      + "food items. Please enter an integer from 1 to "
+                      + "9 to discard an item");
                       while(foodNum < 0 || 10 < foodNum) {
                       System.out.println("\n\n\n\n\n\n\n\n\n"
                       + "1: " + basket[0]
@@ -1623,8 +1629,9 @@ Minimap methods
                   while(i <= 8){
                     if(i == 8){
                       basket[i] = "tomato";
-                      System.out.println("You can not carry more than 8 food items. Please en"
-                      + "ter an integer from 1 to 9 to discard an item");
+                      System.out.println("You can not carry more than 8 "
+                      + "food items. Please enter an integer from 1 to "
+                      + "9 to discard an item");
                       while(foodNum < 0 || 10 < foodNum) {
                         System.out.println("\n\n\n\n\n\n\n\n\n"
                         + "1: " + basket[0]
@@ -1729,8 +1736,9 @@ Minimap methods
                     while(i <= 8){
                       if(i == 8){
                         basket[i] = "tomato";
-                        System.out.println("You can not carry more than 8 food items. Please en"
-                        + "ter an integer from 1 to 9 to discard an item");
+                        System.out.println("You can not carry more than 8 "
+                        + "food items. Please enter an integer from 1 to "
+                        + "9 to discard an item");
                         while(foodNum < 0 || 10 < foodNum) {
                           System.out.println("\n\n\n\n\n\n\n\n\n"
                           + "1: " + basket[0]
@@ -1778,8 +1786,9 @@ Minimap methods
                     while(i <= 8){
                       if(i == 8){
                         basket[i] = "tomato";
-                        System.out.println("You can not carry more than 8 food items. Please en"
-                        + "ter an integer from 1 to 9 to discard an item");
+                        System.out.println("You can not carry more than 8 "
+                        + "food items. Please enter an integer from 1 to "
+                        + "9 to discard an item");
                         while(foodNum < 0 || 10 < foodNum) {
                           System.out.println("\n\n\n\n\n\n\n\n\n"
                           + "1: " + basket[0]
@@ -1834,8 +1843,9 @@ Minimap methods
               while(i <= 8){
                 if(i == 8){
                   basket[i] = "tomato";
-                  System.out.println("You can not carry more than 8 food items. Please en"
-                  + "ter an integer from 1 to 9 to discard an item");
+                  System.out.println("You can not carry more than 8 "
+                  + "food items. Please enter an integer from 1 to "
+                  + "9 to discard an item");
                   while(foodNum < 0 || 10 < foodNum) {
                     System.out.println("\n\n\n\n\n\n\n\n\n"
                     + "1: " + basket[0]
@@ -1926,8 +1936,9 @@ Minimap methods
                 while(i <= 8){
                   if(i == 8){
                     basket[i] = "tomato";
-                    System.out.println("You can not carry more than 8 food items. Please en"
-                    + "ter an integer from 1 to 9 to discard an item");
+                    System.out.println("You can not carry more than 8 "
+                    + "food items. Please enter an integer from 1 to "
+                    + "9 to discard an item");
                     while(foodNum < 0 || 10 < foodNum) {
                       System.out.println("\n\n\n\n\n\n\n\n\n"
                       + "1: " + basket[0]
@@ -2000,8 +2011,9 @@ Minimap methods
               while(i <= 8){
                 if(i == 8){
                   basket[i] = "tomato";
-                  System.out.println("You can not carry more than 8 food items. Please en"
-                  + "ter an integer from 1 to 9 to discard an item");
+                  System.out.println("You can not carry more than 8 "
+                  + "food items. Please enter an integer from 1 to "
+                  + "9 to discard an item");
                   while(foodNum < 0 || 10 < foodNum) {
                     System.out.println("\n\n\n\n\n\n\n\n\n"
                     + "1: " + basket[0]
@@ -2049,8 +2061,9 @@ Minimap methods
               while(i <= 8){
                 if(i == 8){
                   basket[i] = "tomato";
-                  System.out.println("You can not carry more than 8 food items. Please en"
-                  + "ter an integer from 1 to 9 to discard an item");
+                  System.out.println("You can not carry more than 8 "
+                  + "food items. Please enter an integer from 1 to "
+                  + "9 to discard an item");
                   while(foodNum < 0 || 10 < foodNum) {
                     System.out.println("\n\n\n\n\n\n\n\n\n"
                     + "1: " + basket[0]
@@ -2378,8 +2391,9 @@ Minimap methods
     while(i <= 8){
       if(i == 8){
         basket[i] = randomFood();
-        System.out.println("You can not carry more than 8 food items. Please en"
-        + "ter an integer from 1 to 9 to discard an item");
+        System.out.println("You can not carry more than 8 "
+        + "food items. Please enter an integer from 1 to "
+        + "9 to discard an item");
         while(foodNum < 0 || 10 < foodNum) {
           System.out.println("\n\n\n\n\n\n\n\n\n"
           + "1: " + basket[0]
