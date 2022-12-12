@@ -87,7 +87,7 @@ public class VideoGameBones {
 
 
     if(((int) (Math.random() * 2)) == 0) {
-      int minigame = (int) (Math.random() * 8);
+      int minigame = (int) (Math.random() * 4);
       switch(minigame) {
         case 0: battleSystem(basket, numLosses);
                 break;
