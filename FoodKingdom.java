@@ -1743,10 +1743,8 @@ Minimap methods
 
   public static String randomFood(){
     switch((int) (Math.random() * 4)){
-      case 0: return "eggs";
-      case 1: return "Syrup";
-      case 2: return "flour";
-      case 3: return "Cheese";
+      case 0: return "flour";
+      case 1: return "Cheese";
       default: System.out.println("This shouldn't happen");
       return "";
     }
