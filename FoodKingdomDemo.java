@@ -434,6 +434,9 @@ Minimap methods
     //List of hangman parts that will be printed
     String hangmanParts[] = {"Head", "Body", "L-Arm", "R-Arm", "L-Leg",
                              "R-Leg"};
+
+    String[] man = {"0","|", "/", "\\", "/", "\\"};
+    String[] printMan = {"", "", "", "", "", ""};
     //a variable to increase for hangmanParts if the user inputs the wrong thing
     int b = 0;
 
@@ -472,8 +475,14 @@ Minimap methods
       String tempWord = "";
 
       //Prompts the user to enter a word or letter
-      System.out.print("\nInput a letter you think the word contains or "
+      System.out.println("\nInput a letter you think the word contains or "
                          + "input the word instead: ");
+      System.out.println("     _______\n"
+                        + "     |      |\n"
+                        + "     |      " + printMan[0]
+                        + "\n     |     " + printMan[2] + printMan[1] + printMan[3]
+                        + "\n     |     " + printMan[4] + " " + printMan[5]
+                        + "\n   --------");
       String userGuess = input.next();
 
       if(userGuess.equals(guessingWordsList[k]))
@@ -554,7 +563,7 @@ Minimap methods
 
           return; //Andres you change this
         }
-
+        printMan[b] = man[b];
         b++;
 
         System.out.println("\nCurrent Word: " + foodItemMysteryWord);
