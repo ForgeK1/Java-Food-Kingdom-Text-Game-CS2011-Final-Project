@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class VideoGameBones {
+public class CompleteFoodKingdom {
   public static void main(String[] args) {
 
     if (args.length > 0 && args[0].equals("-help")){
@@ -2211,6 +2211,12 @@ Minimap methods
                || userInput == 1 && inputHomelessMan == 2)
          {
 
+
+           System.out.print("The homeless man chose " + inputHomelessManInString
+                              + " and you chose " + userInputString + ", so you "
+                              + "lose and the homeless man took your... ");
+
+
            int r = 0;
            if(isEmpty(basket)){
              System.out.println("Oh wait you didn't have anything to steal");
@@ -2218,20 +2224,11 @@ Minimap methods
              do{
                r = (int) (Math.random() * 8);
              } while(basket[r].equals(""));
+              System.out.println(basket[r] + "!");
+              basket[r] = "";
            }
 
-
-
-
-
-           System.out.println("The homeless man chose " + inputHomelessManInString
-                              + " and you chose " + userInputString + ", so you "
-                              + "lose and the homeless man took your "
-                              + basket[r] + "!");
-
            homelessManTiesWithUser = false;
-
-           basket[r] = "";
            numLosses[0]++;
          }
 

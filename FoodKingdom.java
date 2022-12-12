@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class VideoGameBones {
+public class FoodKingdom {
   public static void main(String[] args) {
 
     if (args.length > 0 && args[0].equals("-help")){
