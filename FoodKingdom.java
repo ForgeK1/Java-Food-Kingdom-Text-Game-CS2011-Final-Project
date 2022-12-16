@@ -1,9 +1,21 @@
+/*
+Food Kingdom Final Project
+-Andres Dominguez
+-Jackson Le
+-Keyvan Mahmoodzadeh Kani
+-Rocio Hernandez
+-Katherine Cadena
+*/
+
+
 import java.util.Scanner;
 import java.util.Arrays;
 
 public class FoodKingdom {
   public static void main(String[] args) {
 
+    /*Command line Section*/
+    /*-----------------------------------------------------------------------*/
     if (args.length > 0 && args[0].equals("-help")){
       System.out.println("Welcome to Food Kingdom. In this game you must travel"
       + " to the ancient grocery tomb/ruins in order to slay the perfect "
@@ -28,22 +40,59 @@ public class FoodKingdom {
 
 
     Scanner input = new Scanner(System.in);
+    //booleans spaces for the mini-map
     boolean[] space = new boolean[29];
 
+    //player will start in space #0 and the rest rest shall be unoccupied
     space[0] = true;
     for(int i = 1; i <= 28; i++) {
       space[i] = false;
     }
 
+    /*player can hold up to 8 slots for items. The 9th slot is to hold a
+      replacement item. At the start of the game, all the slots are empty*/
     String[] basket = new String[9];
     for(int i = 0; i < 9; i++){
       basket[i] = "";
     }
 
-    int[] numLosses = {0};
 
+    /*The following integer array has only one variable that will act as a
+    counter of how many times the player has lost a minigame. The counter is an
+    array since the minigames occur separate methods from main, and an array's
+    have the property of being altered from methods other than main. Normal
+    variables do not*/
+    int[] numLosses = {0};
+    /*The counter is an
+    array since the minigames occur separate methods from main, and an array's
+    have the property of being altered from methods other than main. Normal
+    variables do not*/
+
+    /*The following char variable will record the user's movement around the
+    minimap.
+    */
     char move = ' ';
+    /*
+            w(up)
+    a(left) s(down) d(right)
+    */
+
+
+
     do {
+      /*
+      The map can be understood like so:
+        -The method occupied() checks if a boolean variable is true.
+        -If it's true then it will return a string: "♥" if true, " " if false.
+
+      [0] [1] [2] [3] [4] [5] [6]
+      [7]  █  [8]  █  [9]  █ [10]
+      [11][12][13][14][15][16][17]
+      [18] █  [19] █  [20] █  [21]
+      [22][23][24][25][26][27][28]
+      */
+
+
     System.out.println("\n\n\n\n\n\n\n\n\n\n To move around use"
     + ":\n   w\n a s d \n\n To leave use q\n"
     + "╔=======╗\n"
@@ -71,23 +120,27 @@ public class FoodKingdom {
     + "\n7: " + basket[6]
     + "\n8: " + basket[7]);
 
-
+    //The user inputs his move
     move = input.next().charAt(0);
 
+    //The following loop locates the current index of the array that is occipied
     int index = 0;
     while (space[index] == false) {
       index++;
     }
-
+    //The following method performs the change in occupied space
     movementAt(move, space, index, basket);
 
 
 
 
 
-
+    /*After each input from the user, whether they move spaces or not, there is
+    a 20% of entering a minigame method*/
     if(((int) (Math.random() * 2)) == 0) {
       int minigame = (int) (Math.random() * 8);
+      /*in any minigame you have a chance of adding an item to the basket or
+      gaining your number of losses*/
       switch(minigame) {
         case 0: battleSystem(basket, numLosses);
                 break;
@@ -109,7 +162,7 @@ public class FoodKingdom {
         default: System.out.println("This should not happen");
       }
     }
-
+    //This shall loop until as long as the user does not lose 3 minigames
     } while (numLosses[0] < 3);
       System.out.println("\n\n\n\n\n\n\n\n\n You have lost 3 times. GAME OVER");
 
@@ -126,6 +179,8 @@ Minimap methods
 --------------------------------------------------------------------------
 */
   public static String occupied(boolean space){
+    //if space is occupied, then it will return a "♥",
+    //otherwise it will display " "
     if(space) {
       return "\033[1;31m♥\033[0m";
     } else {
@@ -134,7 +189,11 @@ Minimap methods
   }
 
 
-  public static void movementAt(char move, boolean[] space, int index, String[] basket) {
+  public static void movementAt(char move, boolean[] space, int index,
+   String[] basket) {
+     /*Only some rows are able to move certain directions. Moving left and right
+     is as simple as incrementing or decrementing the index. Moving up or down
+     requires a formula for switching between each row*/
     switch(move) {
       case 'w': switch(index) {
                   case 7:
@@ -227,6 +286,8 @@ Minimap methods
                 }
                 break;
       case 'q': if(space[0] = true) {
+                  /*We start evaluating your food items when you enter 'q' while
+                  space[0] (the exit)*/
                   System.out.println("You have chosen to leave the dungeon");
                   System.out.println("Time to cook!");
 
@@ -284,6 +345,7 @@ Minimap methods
 
 
   public static boolean contains (String[] basket, String food){
+    //This method checks whether an array posseses a string
     for(int i = 0; i < basket.length; i++){
       if(basket[i].equals(food)){
         return true;
@@ -296,12 +358,14 @@ Minimap methods
     Scanner input = new Scanner(System.in);
     System.out.println("Battle starting.");
 
+    //Player and enemy stats are determined
     int yourMaxHP = 100;
     int yourCurrentHP = yourMaxHP;
     int yourATK = 20;
     int yourDamageRecieved;
     int yourDEF = 5;
 
+    //enemy HP will be between 50-100, attack between 10-20, defense between 2-3
     double enemyStatChanger =  Math.random() + 1 ;
     int enemyMaxHP = (int)(50 * enemyStatChanger);
     int enemyCurrentHP = enemyMaxHP;
@@ -311,25 +375,30 @@ Minimap methods
 
     boolean battleStatus = true;
 
+
+    /*The battle will loop until the user's health/ enemy's health is zero or below
+    OR until the user flee's (battleStatus)*/
     while(yourCurrentHP > 0 && enemyCurrentHP > 0 && battleStatus) {
       System.out.println("Your HP: " + yourCurrentHP + "/" + yourMaxHP);
       System.out.println("Enemy HP: " + enemyCurrentHP + "/" + enemyMaxHP);
       System.out.println("Options: Attack (a), Run (b)");
       char selection = input.next().charAt(0);
 
-
+      /*If they choose to attack and the monster's defense is too high, then the
+       enemy will recieve 1 damage point*/
       if(selection == 'a') {
         enemyDamageRecieved = yourATK - enemyDEF;
         if(enemyDamageRecieved < 0) {
           enemyDamageRecieved = 1;
           System.out.println("Get fucked, enemy's defense is too high.");
         }
+        //Damage is exchanged below
         enemyCurrentHP -= enemyDamageRecieved;
         System.out.println("You attacked! You dealt " + (enemyDamageRecieved)
                             + " damage!");
 
         yourDamageRecieved = enemyATK - yourDEF;
-
+        //If your defense is too high, then the you will only take 1 damage
         if(yourDamageRecieved < 0) {
           yourDamageRecieved = 1;
           System.out.println("Fuckin sigma.");
@@ -340,25 +409,33 @@ Minimap methods
         System.out.println("");
 
       }
-
+      //The player chooses to flee
       else if(selection == 'b') {
         battleStatus = false;
         System.out.println("You escaped. You pussy." );
       }
-
+      //The player chooses something that's not a listed option
       else{
         System.out.println("Erm, that isn't a valid option. 🤓🤓🤓 \n");
       }
-
+      /*Check if player's health has reached zero or below. If it has, then the
+      number losses increases*/
       if(yourCurrentHP < 0) {
         battleStatus = false;
         System.out.println("You took the L. SKill issue.");
         numLosses[0]++;
       }
-
+      /*Check if player managed to defeat the monster by getting it's HP to zero or
+      below. If they have then an ingredient is awarded*/
       if(enemyCurrentHP < 0) {
         battleStatus = false;
         System.out.println("That mf got clapped!!! RIP bozo.");
+        //FOOD MACHINE
+        /*The following loop iterates through every index of the array in order
+        to find an empty slot "" to place the new ingredient in. If it can not
+        find one and reaches the end of the array, then it will enter another
+        loop where they have to replace one of their ingredients for the new
+        one*/
         int foodNum = -1;
         int i = 0;
         while(i <= 8){
@@ -457,7 +534,12 @@ Minimap methods
     {
       System.out.println("\nCongradulations, you won the game! The food "
       + "item you recieve is " + foodItem);
-
+      //FOOD MACHINE
+      /*The following loop iterates through every index of the array in order
+      to find an empty slot "" to place the new ingredient in. If it can not
+      find one and reaches the end of the array, then it will enter another
+      loop where they have to replace one of their ingredients for the new
+      one*/
       int foodNum = -1;
       int i = 0;
       while(i <= 8){
@@ -775,6 +857,14 @@ Minimap methods
                            + "to go and buy an ingredient. So you buy "
                            + foodItem + " and continue with your quest.");
 
+
+
+        //FOOD MACHINE
+        /*The following loop iterates through every index of the array in order
+        to find an empty slot "" to place the new ingredient in. If it can not
+        find one and reaches the end of the array, then it will enter another
+        loop where they have to replace one of their ingredients for the new
+        one*/
         int foodNum = -1;
         int i = 0;
         while(i <= 8){
@@ -836,7 +926,7 @@ Minimap methods
 
 
 
-        //Andres draws Ascii here***********************************
+
 
         if(b == 5)
         {
@@ -846,7 +936,7 @@ Minimap methods
 
           numLosses[0]++;
 
-          return; //Andres you change this
+          return;
         }
         printMan[b] = man[b];
         b++;
@@ -862,7 +952,13 @@ Minimap methods
                        + "to go and buy an ingredient. So you buy "
                        + foodItem + " and continue with your quest.");
 
-
+    //FOOD MACHINE
+    /*The following loop iterates through every index of the
+    array in order to find an empty slot "" to place the new
+    ingredient in. If it can not find one and reaches the end
+    of the array, then it will enter another loop where they
+    have to replace one of their ingredients for the new
+    one*/
                        int foodNum = -1;
                        int i = 0;
                        while(i <= 8){
@@ -1022,6 +1118,12 @@ Minimap methods
                          "suddenly she's gone. You continue with your quest.");
 
 
+      //FOOD MACHINE
+      /*The following loop iterates through every index of the array in order
+      to find an empty slot "" to place the new ingredient in. If it can not
+      find one and reaches the end of the array, then it will enter another
+      loop where they have to replace one of their ingredients for the new
+      one*/
       int foodNum = -1;
       int i = 0;
       while(i <= 8){
@@ -1164,6 +1266,12 @@ Minimap methods
       System.out.println("\nYou won! You open to the vault and recieve: "
                          + randomizedFoodItem);
 
+      //FOOD MACHINE
+      /*The following loop iterates through every index of the array in order
+      to find an empty slot "" to place the new ingredient in. If it can not
+      find one and reaches the end of the array, then it will enter another
+      loop where they have to replace one of their ingredients for the new
+      one*/
       int foodNum = -1;
       int i = 0;
       while(i <= 8){
@@ -1212,10 +1320,6 @@ Minimap methods
     //for food winning purposes
     int foodNum;
     int i;
-
-
-
-
 
 
     int dialogueRandomizer = (int)(Math.random() * 3) + 1;
@@ -1314,6 +1418,13 @@ Minimap methods
                                             + "executed. \n"
                                             + "You got a rotten Tomato");
                         talkWithIngredient = false;
+                        //FOOD MACHINE
+                        /*The following loop iterates through every index of the
+                        array in order to find an empty slot "" to place the new
+                        ingredient in. If it can not find one and reaches the
+                        end of the array, then it will enter another loop where
+                        they have to replace one of their ingredients for the
+                        new one*/
                         foodNum = -1;
                         i = 0;
                         while(i <= 8){
@@ -1366,6 +1477,13 @@ Minimap methods
                                               + "ingredient, 'love'. \n"
                                               + "You obtained love.");
                           talkWithIngredient = false;
+                          //FOOD MACHINE
+                          /*The following loop iterates through every index of
+                          the array in order to find an empty slot "" to place
+                          the new ingredient in. If it can not find one and
+                          reaches the end of the array, then it will enter
+                          another loop where they have to replace one of their
+                          ingredients for the new one*/
                           foodNum = -1;
                           i = 0;
                           while(i <= 8){
@@ -1406,14 +1524,22 @@ Minimap methods
                                               + "late king. \n You "
                                               + "got a rotten Tomato");
                           talkWithIngredient = false;
+
+                          //FOOD MACHINE
+                          /*The following loop iterates through every index of
+                          the array in order to find an empty slot "" to place
+                          the new ingredient in. If it can not find one and
+                          reaches the end of the array, then it will enter
+                          another loop where they have to replace one of their
+                          ingredients for the new one*/
                           foodNum = -1;
                           i = 0;
                           while(i <= 8){
                             if(i == 8){
                               basket[i] = "tomato";
-                              System.out.println("You can not carry more than 8 "
-                              + "food items. Please enter an integer from 1 to "
-                              + "9 to discard an item");
+                              System.out.println("You can not carry more than 8"
+                              + " food items. Please enter an integer from 1 to"
+                              + " 9 to discard an item");
                               while(foodNum < 0 || 10 < foodNum) {
                                 System.out.println("\n\n\n\n\n\n\n\n\n"
                                 + "1: " + basket[0]
@@ -1424,7 +1550,8 @@ Minimap methods
                                 + "\n6: " + basket[5]
                                 + "\n7: " + basket[6]
                                 + "\n8: " + basket[7]
-                                + "\n9: " + basket[8] + "(item you just obtained)");
+                                + "\n9: " + basket[8] + "(item you just "
+                                + "obtained)");
                                 foodNum = input.nextInt();
                               }
                               basket[foodNum - 1] = basket[i];
@@ -1545,6 +1672,13 @@ Minimap methods
                                         + "Tomato.");
                     talkWithIngredient = false;
 
+
+                    //FOOD MACHINE
+                    /*The following loop iterates through every index of the
+                    array in order to find an empty slot "" to place the new
+                    ingredient in. If it can not find one and reaches the end of
+                    the array, then it will enter another loop where they have
+                    to replace one of their ingredients for the new one*/
                     foodNum = -1;
                     i = 0;
                     while(i <= 8){
@@ -1592,6 +1726,13 @@ Minimap methods
                                         + "ingredient love. \n"
                                         + "You obtained the secret ingredient "
                                         + "love.");
+
+                    //FOOD MACHINE
+                    /*The following loop iterates through every index of the
+                    array in order to find an empty slot "" to place the new
+                    ingredient in. If it can not find one and reaches the end of
+                    the array, then it will enter another loop where they have
+                    to replace one of their ingredients for the new one*/
                     foodNum = -1;
                     i = 0;
                     while(i <= 8){
@@ -1638,6 +1779,13 @@ Minimap methods
                                       + " a healthy looking Tomato. \n"
                                       + "You obtained a Tomato.");
                   talkWithIngredient = false;
+
+                  //FOOD MACHINE
+                  /*The following loop iterates through every index of the array
+                  in order to find an empty slot "" to place the new ingredient
+                  in. If it can not find one and reaches the end of the array,
+                  then it will enter another loop where they have to replace one
+                  of their ingredients for the new one*/
                   foodNum = -1;
                   i = 0;
                   while(i <= 8){
@@ -1795,6 +1943,12 @@ Minimap methods
                                         + "self-centered fodder to be bought. \n"
                                         + "You got yourself a Tomato.");
 
+                    //FOOD MACHINE
+                    /*The following loop iterates through every index of the
+                    array in order to find an empty slot "" to place the new
+                    ingredient in. If it can not find one and reaches the end of
+                    the array, then it will enter another loop where they have
+                    to replace one of their ingredients for the new one*/
                     foodNum = -1;
                     i = 0;
                     while(i <= 8){
@@ -1852,6 +2006,12 @@ Minimap methods
               System.out.println("You beat up the tomato, and collected it's carcass");
               talkWithIngredient = false;
 
+              //FOOD MACHINE
+              /*The following loop iterates through every index of the
+              array in order to find an empty slot "" to place the new
+              ingredient in. If it can not find one and reaches the end of
+              the array, then it will enter another loop where they have
+              to replace one of their ingredients for the new one*/
               foodNum = -1;
               i = 0;
               while(i <= 8){
@@ -1945,6 +2105,12 @@ Minimap methods
                                     + "You obtained a Tomato.");
                 talkWithIngredient = false;
 
+                //FOOD MACHINE
+                /*The following loop iterates through every index of the
+                array in order to find an empty slot "" to place the new
+                ingredient in. If it can not find one and reaches the end of
+                the array, then it will enter another loop where they have
+                to replace one of their ingredients for the new one*/
                 foodNum = -1;
                 i = 0;
                 while(i <= 8){
@@ -2020,6 +2186,12 @@ Minimap methods
                                   + "Tomato.");
               talkWithIngredient = false;
 
+              //FOOD MACHINE
+              /*The following loop iterates through every index of the
+              array in order to find an empty slot "" to place the new
+              ingredient in. If it can not find one and reaches the end of
+              the array, then it will enter another loop where they have
+              to replace one of their ingredients for the new one*/
               foodNum = -1;
               i = 0;
               while(i <= 8){
@@ -2070,6 +2242,12 @@ Minimap methods
                                   + "you got a Tomato.");
               talkWithIngredient = false;
 
+              //FOOD MACHINE
+              /*The following loop iterates through every index of the
+              array in order to find an empty slot "" to place the new
+              ingredient in. If it can not find one and reaches the end of
+              the array, then it will enter another loop where they have
+              to replace one of their ingredients for the new one*/
               foodNum = -1;
               i = 0;
               while(i <= 8){
@@ -2201,6 +2379,12 @@ Minimap methods
 
            homelessManTiesWithUser = false;
 
+           //FOOD MACHINE
+           /*The following loop iterates through every index of the
+           array in order to find an empty slot "" to place the new
+           ingredient in. If it can not find one and reaches the end of
+           the array, then it will enter another loop where they have
+           to replace one of their ingredients for the new one*/
            int foodNum = -1;
            int i = 0;
            while(i <= 8){
@@ -2397,48 +2581,13 @@ Minimap methods
     } return true;
   }
 
-
-  public static void addFood(String[] basket){
-    Scanner input = new Scanner(System.in);
-    int foodNum = -1;
-    int i = 0;
-    while(i <= 8){
-      if(i == 8){
-        basket[i] = randomFood();
-        System.out.println("You can not carry more than 8 "
-        + "food items. Please enter an integer from 1 to "
-        + "9 to discard an item");
-        while(foodNum < 0 || 10 < foodNum) {
-          System.out.println("\n\n\n\n\n\n\n\n\n"
-          + "1: " + basket[0]
-          + "\n2: " + basket[1]
-          + "\n3: " + basket[2]
-          + "\n4: " + basket[3]
-          + "\n5: " + basket[4]
-          + "\n6: " + basket[5]
-          + "\n7: " + basket[6]
-          + "\n8: " + basket[7]
-          + "\n9: " + basket[8] + "(item you just obtained)");
-          foodNum = input.nextInt();
-        }
-        basket[foodNum - 1] = basket[i];
-        basket[8] = "";
-        return;
-      } else if(basket[i] == "") {
-        basket[i] = randomFood();
-        return;
-      }
-      i++;
-    }
-
-  }
-
+  //picks a random food item from the following options
   public static String randomFood(){
     switch((int) (Math.random() * 4)){
       case 0: return "eggs";
-      case 1: return "Syrup";
+      case 1: return "syrup";
       case 2: return "flour";
-      case 3: return "Cheese";
+      case 3: return "cheese";
       default: System.out.println("This shouldn't happen");
       return "";
     }
