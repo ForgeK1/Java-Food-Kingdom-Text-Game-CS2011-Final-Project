@@ -1,5 +1,5 @@
 # Java-Food-Kingdom-Text-Game-CS2011-Final-Project
-This is my final project for CS 2011! We were tasked to create a new game in Java code 👾🎮:
+This is my final project for CS 2011! We were tasked to create a new game in Java code 🎮.
 
 **Name of the project**: "Food Kingdom"
 
