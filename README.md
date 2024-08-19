@@ -1,9 +1,9 @@
 # Java-Food-Kingdom-Text-Game-CS2011-Final-Project
 This is my final project for CS 2011! We were tasked to create a new game in Java code 🎮.
 
-**Name of the project**: "Food Kingdom"
+**Name of the project**: Food Kingdom
 
-**Game Description**: The King has fallen ill and it your your job as head chef to attain a sum amount of ingredients to make a dish that will heal the King! You will be going through the grocery aile and encountering many different challenges to attain ingredients. Once you collected a good amount of ingredients you can leave the aile to make your dish 🍲.
+**Game Description**: The King has fallen ill and it your your job as head chef to attain a sum amount of ingredients to make a dish that will heal the King! You will be going through the grocery aile and encountering many different challenges to attain ingredients. Once you collected a good amount of ingredients you can leave the aisle to make your dish 🍲.
 
 **Minigames the player would encounter**:
 1) "Battle System" (Player fights an enemy through a turned based RPG minigame)
