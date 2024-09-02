@@ -21,3 +21,9 @@ This is our final team project for CS 2011! We were tasked to create a new game 
 7. Mysterious Magician has appeared! 🎴: The player is forced to choose from a deck of cards that will be shuffled for each turn.
 
 8. Pick A Chest 🗝️: The player has three different mysterious chests to choose from...)
+
+Credits
+1. Rocio and Katherine: Created the ASCII art and story development
+2. Keyvan: Created the hangman, blackjack, rock-paper-scissors, shuffled-card picker, and timed-vault chest minigames
+3. Andres: Helped create the ASCII art, and created the FoodKingdom class that involved the movement system, keeping track of ingredients, and dynamically switching to different story points and minigames
+4. Jackson: Created the battle system, ingredient interaction, and pick a chest minigames
