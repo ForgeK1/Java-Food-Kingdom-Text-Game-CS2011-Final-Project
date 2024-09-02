@@ -22,7 +22,7 @@ This is our final team project for CS 2011! We were tasked to create a new game 
 
 8. Pick A Chest 🗝️: The player has three different mysterious chests to choose from...)
 
-Credits
+**Credits**
 1. Rocio and Katherine: Created the ASCII art and story development
 2. Keyvan: Created the hangman, blackjack, rock-paper-scissors, shuffled-card picker, and timed-vault chest minigames
 3. Andres: Helped create the ASCII art, and created the FoodKingdom class that involved the movement system, keeping track of ingredients, and dynamically switching to different story points and minigames
