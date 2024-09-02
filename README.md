@@ -5,7 +5,7 @@ This is our final team project for CS 2011! We were tasked to create a new game 
 
 **Game Description**: The king has fallen ill, and it is your job as head chef to attain a sum of ingredients to make a dish that will heal the king! You will go through the grocery aisle and encounter many challenges in acquiring ingredients. Once you collected many ingredients, you can leave the aisle to make your dish 🍲.
 
-**Minigames the player would encounter**:
+**Minigames the player would encounter**
 1. Battle System ⚔️: The player fights an enemy through a turned-based RPG minigame.
 
 2. Better Hurry! 🛡️: The player has to open a vault by inputting the correct letters given three tries under a limited time
