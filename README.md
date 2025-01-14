@@ -27,3 +27,6 @@ This is our final team project for CS 2011! We were tasked to create a new game 
 2. Keyvan: Created the hangman, blackjack, rock-paper-scissors, shuffled-card picker, and timed-vault chest minigames
 3. Andres: Helped create the ASCII art, and created the FoodKingdom class that involved the movement system, keeping track of ingredients, and dynamically switching to different story points and minigames
 4. Jackson: Created the battle system, ingredient interaction, and pick a chest minigames
+
+**Brainstorming Document**: [Weronika Final Project Game Ideas.docx](https://github.com/user-attachments/files/18404641/Weronika.Final.Project.Game.Ideas.docx)
+
